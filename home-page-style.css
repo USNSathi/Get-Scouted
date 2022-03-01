@@ -33,3 +33,44 @@ padding-left: 100px;
 .carousel-caption{
     text-align: right;
 }
+
+.job-search-wrap{
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px black;
+    padding-top: 60px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    height: 150px;
+}
+
+.row{
+    text-align: center;
+}
+
+.section-title{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.title{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.gray-row{
+    background-color: rgb(32, 32, 32);
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+.number{
+color: white;
+font-size: 50px;
+}
+
+.p{
+    color: white;
+    font-size: 25px;
+}

@@ -60,7 +60,7 @@ padding-left: 100px;
 }
 
 .gray-row{
-    background-color: rgb(32, 32, 32);
+    background: linear-gradient(to right, #696868, rgb(32, 32, 32), #696868);
     padding-top: 60px;
     padding-bottom: 20px;
 }
@@ -73,4 +73,8 @@ font-size: 50px;
 .p{
     color: white;
     font-size: 25px;
+}
+
+.footer{
+    margin-top: 200px;
 }

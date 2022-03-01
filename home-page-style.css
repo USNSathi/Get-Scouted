@@ -1,0 +1,35 @@
+.navbar-brand{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.navbar-nav{
+padding-left: 100px;
+}
+
+.nav-item{
+    padding-left: 25px;
+}
+
+.link-dark{
+    text-decoration: none;
+}
+
+.job-image{
+    width: 100%;
+    height: 50rem;;
+}
+
+.text-find{
+    font-weight: 750; 
+    font-size: 80px;
+}
+
+.text-more{
+     font-weight: 300; 
+     font-size: 25px;
+}
+
+.carousel-caption{
+    text-align: right;
+}

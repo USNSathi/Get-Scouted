@@ -2,20 +2,23 @@
     margin-top: 5%;
     margin-bottom: 5%;
 }
+
 .login-form-1{
     padding: 5%;
     background: #28282B;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
+
 .login-form-1 h3{
     text-align: center;
     color: #d8d8d8;
 }
+
 .login-container form{
     padding: 10%;
 }
-.btnSubmit
-{
+
+.btnSubmit{
     margin-top: 5%;
     margin-bottom: 2%;
     width: 50%;
@@ -27,19 +30,23 @@
 
 .login-form-1 .btnSubmit{
     font-weight: 600;
-    color: #black;
+    color: black;
     background-color: #d8d8d8;
 }
+
 .btnSubmit:hover{
-  color: #black;
+  color: black;
   background-color: red; /*#9ba3a4*/
 }
+
 .ForgetPwd{
   color: #d8d8d8;
 }
+
 .ForgetPwd:hover{
   color: red;    /*#9ba3a4*/
 }
+
 .form-group{
   margin-bottom: 1%;
 }

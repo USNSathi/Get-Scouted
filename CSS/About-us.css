@@ -10,5 +10,10 @@
 
 .carousel-caption{
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 165px;
+}
+
+.about-us{
+    margin-top: 100px;
+    text-align: justify;
 }

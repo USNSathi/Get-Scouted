@@ -62,6 +62,10 @@ padding-left: 100px;
     height: 150px;
 }
 
+.search{
+    height: 40px;
+}
+
 .row{
     text-align: center;
     width: 100%;

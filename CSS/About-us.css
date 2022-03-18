@@ -1,19 +1,19 @@
-.about-us-image{
-    width: 100%;
-    height: 40rem;;
+.about-us-image {
+  width: 100%;
+  height: 40rem;
 }
 
-.text-mv{
-     font-weight: 400; 
-     font-size: 40px;
+.text-mv {
+  font-weight: 400;
+  font-size: 40px;
 }
 
-.carousel-caption{
-    text-align: center;
-    padding-bottom: 165px;
+.carousel-caption {
+  text-align: center;
+  padding-bottom: 165px;
 }
 
-.about-us{
-    margin-top: 100px;
-    text-align: justify;
+.about-us {
+  margin-top: 100px;
+  text-align: justify;
 }

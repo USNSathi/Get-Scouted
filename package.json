@@ -1,0 +1,21 @@
+{
+  "name": "get-scouted",
+  "version": "1.0.0",
+  "description": "Job searching ",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "cse482"
+  ],
+  "author": "Sathi",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

@@ -7,6 +7,16 @@ const cookieParser = require("cookie-parser");
 const siteRoutes = require('./routes/siteRoutes');
 const Sequelize = require("./models/index").Sequelize;
 
+const Credentials = require("./models/credentials");
+const User = require("./models/users");
+const Applicant = require("./models/applicants");
+const Admin = require("./models/admins");
+const Recruiter = require("./models/recruiters");
+const Job = require("./models/jobs");
+const JobApplication = require("./models/jobApplications");
+
+
+
 const config = require("./config/server.config");
 const port = process.env.PORT || config.PORT;
 
@@ -47,7 +57,7 @@ app.set('view engine', 'html');
 app.use('/', siteRoutes.router);
 
 Sequelize.sync({
-    force: false,
+    force: true,
 })
     .then(() => {
         console.log("Database connection has been established successfully.");

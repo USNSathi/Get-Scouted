@@ -19,6 +19,6 @@ if (config.use_env_variable) {
 }
 
 db.Sequelize = sequelize;
-db.DataTypes = Sequelize;
+db.DataType = Sequelize;
 
 module.exports = db;

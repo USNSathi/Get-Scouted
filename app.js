@@ -1,11 +1,14 @@
 // const http = require('http');
-const express = require('express');
 const path = require('path');
+const express = require('express');
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
 const siteRoutes = require('./routes/siteRoutes');
 
 
-const port = 8000;
+const config = require("./config/server.config");
+const port = process.env.PORT || config.PORT;
 
 // const server = http.createServer(
 //     (req, res) => {
@@ -15,6 +18,26 @@ const port = 8000;
 // );
 
 const app = express();
+app.use(cookieParser(process.env.COOKIE_SECRET || config.COOKIE_SECRET));
+app.use(
+    session({
+        secret: process.env.COOKIE_SECRET || config.COOKIE_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            path: "/",
+            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+            httpOnly: true,
+        },
+    })
+);
+
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
 
 // express configuration
 app.use(express.static('assets'));

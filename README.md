@@ -5,3 +5,6 @@
 2. `sequelize-cli` - This tool is use for creating database and its operations.
 
 ## Project dependency 
+1. `express` -
+2. `bcrypt` - 
+3. `uuid` -

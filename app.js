@@ -5,7 +5,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 
 const siteRoutes = require('./routes/siteRoutes');
-
+const Sequelize = require("./models/index").Sequelize;
 
 const config = require("./config/server.config");
 const port = process.env.PORT || config.PORT;
@@ -46,5 +46,17 @@ app.set('view engine', 'html');
 
 app.use('/', siteRoutes.router);
 
+Sequelize.sync({
+    force: false,
+})
+    .then(() => {
+        console.log("Database connection has been established successfully.");
+    })
+    .catch((error) => {
+        if (error.message.includes("Unknown database")) {
+            console.log("Create Database Manually");
+        }
+    });
+
 // server.listen(port);
-app.listen(8000);
+app.listen(port);

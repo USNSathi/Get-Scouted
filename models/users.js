@@ -12,6 +12,18 @@ const User = Sequelize.define("users", {
         primaryKey: true,
         allowNull: false,
     },
+    name: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
+    photo: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
+    phone: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
     role: {
         type: Datatype.STRING,
         allowNull: false,

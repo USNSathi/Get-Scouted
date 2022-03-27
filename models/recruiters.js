@@ -12,18 +12,6 @@ const Recruiter = Sequelize.define("recruiters", {
         primaryKey: true,
         allowNull: false,
     },
-    name: {
-        type: Datatype.STRING,
-        allowNull: false,
-    },
-    photo: {
-        type: Datatype.STRING,
-        allowNull: false,
-    },
-    phone: {
-        type: Datatype.STRING,
-        allowNull: false,
-    },
     companyName: {
         type: Datatype.STRING,
         allowNull: false,

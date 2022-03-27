@@ -12,18 +12,6 @@ const Applicant = Sequelize.define("applicants", {
         primaryKey: true,
         allowNull: false,
     },
-    name: {
-        type: Datatype.STRING,
-        allowNull: false,
-    },
-    photo: {
-        type: Datatype.STRING,
-        allowNull: false,
-    },
-    phone: {
-        type: Datatype.STRING,
-        allowNull: false,
-    },
     cv: {
         type: Datatype.STRING,
         allowNull: false,

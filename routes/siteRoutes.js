@@ -4,7 +4,7 @@ const siteController = require('../controllers/siteController');
 
 router.get('/', siteController.landingPage);
 
-router.get('/about', siteController.aboutPage);
+router.get('/aboutus', siteController.aboutPage);
 
 router.get('/contact', siteController.contactPage);
 

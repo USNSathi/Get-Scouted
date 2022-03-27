@@ -52,7 +52,7 @@ app.use(
 // express configuration
 app.use(express.static('assets'));
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 
 app.use('/', siteRoutes.router);
 

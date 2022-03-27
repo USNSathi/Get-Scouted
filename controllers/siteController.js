@@ -1,21 +1,21 @@
 const landingPage = (req, res) => {
-    res.sendFile('index.html', { root: './views' });
+    res.render('index', { url: '/', title: 'Home' });
 };
 
 const aboutPage = (req, res) => {
-    res.sendFile('about-us.html', { root: './views' });
+    res.render('about-us', { url: '/aboutus', title: 'About Us' });
 };
 
 const contactPage = (req, res) => {
-    res.sendFile('contact-us.html', { root: './views' });
+    res.render('contact-us', { url: '/contact', title: 'Contact Us' });
 };
 
 const loginPage = (req, res) => {
-    res.sendFile('login.html', { root: './views' });
+    res.render('login', { url: '/login', title: 'Login' });
 };
 
 const signupPage = (req, res) => {
-    res.sendFile('sign-up.html', { root: './views' });
+    res.render('signup', { url: '/signup', title: 'Signup' });
 };
 
 module.exports = {

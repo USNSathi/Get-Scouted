@@ -5,18 +5,18 @@
 
         <div class="signup-box">
             <h1>Sign Up</h1>
-            <form>
+            <form action="/auth/register" method="post">
                 <label>First Name</label>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" name="fname">
                 <label>Last Name</label>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" name="lname">
                 <label>Email</label>
-                <input type="email" placeholder="">
+                <input type="email" placeholder="" name="email">
                 <label>Password</label>
-                <input type="password" placeholder="">
+                <input type="password" placeholder="" name="password">
                 <label>Confirm Password</label>
-                <input type="password" placeholder="">
-                <input type="button" value="Submit">
+                <input type="password" placeholder="" confirmPassword>
+                <input type="submit" value="Submit">
             </form>
 
             <div>

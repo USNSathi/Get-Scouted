@@ -4,8 +4,7 @@ const express = require('express');
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 
-const siteRoutes = require('./routes/siteRoutes');
-const Sequelize = require("./models/index").Sequelize;
+const routes = require('./routes');
 
 const Credentials = require("./models/credentials");
 const User = require("./models/users");
@@ -15,24 +14,17 @@ const Recruiter = require("./models/recruiters");
 const Job = require("./models/jobs");
 const JobApplication = require("./models/jobApplications");
 
-
+const Sequelize = require("./models/index").Sequelize;
 
 const config = require("./config/server.config");
 const port = process.env.PORT || config.PORT;
 
-// const server = http.createServer(
-//     (req, res) => {
-//         console.log(req.headers);
-//         res.end('Hello World');
-//     }
-// );
-
 const app = express();
 app.use(cookieParser(process.env.COOKIE_SECRET || config.COOKIE_SECRET));
+
 app.use(
     session({
-        secret: process.env.COOKIE_SECRET || config.COOKIE_SECRET,
-        resave: false,
+        secret: process.env.SESSION_SECRET || config.SESSION_SECRET,
         saveUninitialized: false,
         cookie: {
             path: "/",
@@ -54,7 +46,7 @@ app.use(express.static('assets'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use('/', siteRoutes.router);
+app.use('/', routes);
 
 Sequelize.sync({
     force: true,
@@ -68,5 +60,4 @@ Sequelize.sync({
         }
     });
 
-// server.listen(port);
 app.listen(port);

@@ -12,7 +12,5 @@ router.get('/login', siteController.loginPage);
 
 router.get('/signup', siteController.signupPage);
 
-module.exports = {
-    router
-};
+module.exports = router;
 

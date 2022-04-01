@@ -20,6 +20,10 @@ const Job = Sequelize.define("jobs", {
         type: Datatype.STRING,
         allowNull: false,
     },
+    deadline: {
+        type: Datatype.DATEONLY,
+        allowNull: false,
+    },
     type: {
         type: Datatype.STRING,
         allowNull: false,
@@ -49,6 +53,11 @@ const Job = Sequelize.define("jobs", {
         type: Datatype.STRING,
         allowNull: false,
         defaultValue: "open", // open, filled, removed, closed
+    },
+    isVerified: {
+        type: Datatype.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
     },
     rid: {
         type: Datatype.UUID,

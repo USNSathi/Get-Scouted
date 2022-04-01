@@ -48,4 +48,4 @@ const JobApplication = Sequelize.define("jobApplications", {
     },
 });
 
-module.exports = Job;
+module.exports = JobApplication;

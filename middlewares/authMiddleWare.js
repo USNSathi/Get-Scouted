@@ -1,29 +1,49 @@
+const isAuthenticated = (req, res, next) => {
+	var cookies = req.signedCookies.getscouted;
+	var accessToken = '';
 
-const isAuthenticate = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/login');
-}
+	// console.log("cookies: ", cookies);
 
-const isRecruiter = (req, res, next) => {
+	try {
+		// console.log("Try");
+		accessToken = cookies && cookies.accessToken.split(' ')[1];
+	} catch (err) {
+		console.log(err);
+	}
 
-    if (req.user.role === 'recruiter') {
-        return next();
-    }
-    res.redirect('/login');
-};
+	if (cookies == undefined || tokens == undefined) {
+		req.session.message = 'Access denied';
+		res.redirect('/404');
+		return;
+	}
 
-const isCandidate = (req, res, next) => {
+	jwt.verify(tokens.accessToken, process.env.ACCESS_TOKEN_SECRET || config.ACCESS_TOKEN_SECRET, (err, decodeData) => {
+		// console.log("ACCESS TOKEN VERIFY: ",tokens.accessToken);
 
-    if (req.user.role === 'candidate') {
-        return next();
-    }
-    res.redirect('/login');
+		if (err) {
+			if (err.name == 'TokenExpiredError') {
+				// Timeout
+				req.session.message = 'Login timeout';
+				res.redirect('/login');
+			}
+
+			if (!err.message) {
+				res.session.message = err.message;
+				return res.redirect('/404');
+			}
+		} else {
+			res.locals.user = decodeData;
+
+			// console.log("SUCCESS: AuthMiddleware: ", res.locals);
+			// console.log("DECODE: AuthMiddleware: ", decodeData);
+
+			// console.log("ERROR: AuthMMiddleware", err);
+
+			next();
+		}
+	});
 };
 
 module.exports = {
-    isAuthenticate,
-    isRecruiter,
-    isCandidate
+	isAuthenticated,
 };

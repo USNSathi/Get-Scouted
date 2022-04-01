@@ -34,8 +34,8 @@ const login = (req, res) => {
 
                 res.locals.token = token;
 
-                res.cookie('token', token, {
-                    maxAge: 1 * 60 * 60 * 1000, // 1 hour
+                res.cookie('getscouted', token, {
+                    maxAge: 12 * 60 * 60 * 1000, // 12 hour
                     httpOnly: true,
                     sameSite: true,
                     secure: true,

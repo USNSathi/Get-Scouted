@@ -12,5 +12,7 @@ router.get('/login', siteController.loginPage);
 
 router.get('/signup', siteController.signupPage);
 
+router.get('/candidate-profile', siteController.candidateProfilePage);
+
 module.exports = router;
 

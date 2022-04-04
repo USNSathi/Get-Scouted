@@ -8,16 +8,20 @@
                 </div>
                 <div class="col-md-5 login-form-1">
                     <h3>Login</h3>
-                    <form>
+                    <form action="/auth/login" id="loginForm" method="post">
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                            <input type="email" name="email" class="form-control" placeholder="Your Email *"
+                                id="email" />
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                            <input type="password" name="password" class="form-control" placeholder="Your Password *"
+                                id="password" />
                         </div>
+                        <div id="message"></div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />
                         </div>
+
                         <div class="form-group">
                             <a href="#" class="ForgetPwd">Forget Password?</a>
                         </div>
@@ -28,6 +32,10 @@
             </div>
         </div>
     </section>
+
+    <script src="/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/js/auth/login.js"></script>
+    </body>
 
     <!-- Footer Part Start -->
     <%- include('modules/foot') %>

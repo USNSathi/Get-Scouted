@@ -6,12 +6,22 @@ const tokenGenerator = require('../utils/tokenGenerator');
 const login = (req, res) => {
     const { email, password } = req.body;
 
-    Credentials.findOne(email).then(credential => {
+    // console.log(req.body);
+
+    // res.send(req.body);
+
+    Credentials.findOne({
+        where: {
+            email: email,
+        },
+    }).then(credential => {
         if (!credential) {
             res.locals.message = 'Login failed';
         }
 
         else if (credential.validPassword(password)) {
+
+            // console.log(credential.dataValues);
 
             if (credential.isBan) {
                 res.locals.message = 'You are banned';
@@ -23,7 +33,11 @@ const login = (req, res) => {
                 email: credential.email,
             };
 
-            User.findOne(credential.id).then(user => {
+            User.findOne({
+                where: {
+                    cid: credential.id,
+                },
+            }).then(user => {
                 res.locals.user = {
                     id: user.id,
                     name: user.name,
@@ -47,15 +61,27 @@ const login = (req, res) => {
                     signed: true,
                 });
 
-                if (user.role === 'recruiter') {
-                    res.redirect('/recruit');
-                } else if (user.role === 'applicant') {
-                    res.redirect('/apply');
-                } else if (user.role === 'admin') {
-                    res.redirect('/admin');
-                } else {
-                    res.redirect('/notfound');
-                }
+                res.send({
+                    message: 'Login success',
+                    token: token,
+                    user: {
+                        id: user.id,
+                        name: user.name,
+                        photo: user.photo,
+                        phone: user.phone,
+                        role: user.role,
+                    },
+                });
+
+                // if (user.role === 'recruiter') {
+                //     res.redirect('/recruit');
+                // } else if (user.role === 'applicant') {
+                //     res.redirect('/apply');
+                // } else if (user.role === 'admin') {
+                //     res.redirect('/admin');
+                // } else {
+                //     res.redirect('/notfound');
+                // }
             }).catch(err => {
                 res.locals.message = 'Login failed';
                 res.locals.user = {};

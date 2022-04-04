@@ -16,15 +16,23 @@ const Applicant = Sequelize.define('applicants', {
 		type: Datatype.STRING,
 		allowNull: false,
 	},
+	skill: {
+		type: Datatype.STRING,
+		allowNull: false,
+	},
 	status: {
 		type: Datatype.STRING,
 		allowNull: false,
 		defaultValue: 'open', // open, blocked, jobholder
 	},
-	location: {
+	region: {
 		type: Datatype.STRING,
 		allowNull: false,
-		defaultValue: 'Dhaka, Bangladesh',
+	},
+	country: {
+		type: Datatype.STRING,
+		allowNull: false,
+		defaultValue: 'Bangladesh',
 	},
 	currentCompany: {
 		type: Datatype.STRING,
@@ -47,12 +55,12 @@ const Applicant = Sequelize.define('applicants', {
 });
 
 Applicant.belongsTo(User, {
-    foreignKey: 'uid',
-    allowNull: false,
-    as: 'jobseekers',
+	foreignKey: 'uid',
+	allowNull: false,
+	as: 'jobseekers',
 
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
+	onUpdate: 'CASCADE',
+	onDelete: 'CASCADE',
 });
 
 module.exports = Applicant;

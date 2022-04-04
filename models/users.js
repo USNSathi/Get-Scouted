@@ -12,9 +12,13 @@ const User = Sequelize.define("users", {
         primaryKey: true,
         allowNull: false,
     },
-    name: {
+    firstName: {
         type: Datatype.STRING,
         allowNull: false,
+    },
+    lastName: {
+        type: Datatype.STRING,
+        allowNull: true,
     },
     photo: {
         type: Datatype.STRING,
@@ -24,15 +28,9 @@ const User = Sequelize.define("users", {
         type: Datatype.STRING,
         allowNull: false,
     },
-    role: {
+    address: {
         type: Datatype.STRING,
         allowNull: false,
-        defaultValue: "applicant", // applicant, admin, recruiter
-    },
-    isBan: {
-        type: Datatype.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
     },
     cid: {
         type: Datatype.UUID,

@@ -25,6 +25,16 @@ const Credential = Sequelize.define("credentials", {
         type: Datatype.STRING,
         allowNull: false,
     },
+    role: {
+        type: Datatype.STRING,
+        allowNull: false,
+        defaultValue: "applicant", // applicant, admin, recruiter
+    },
+    isBan: {
+        type: Datatype.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
 },
     {
         hooks: {

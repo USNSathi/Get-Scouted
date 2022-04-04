@@ -9,6 +9,6 @@ router.use('/', siteRoutes);
 router.use('/auth', authRoutes);
 router.use('/jobs', jobRoutes);
 
-router.use('/applicants', applicantRoutes);
+router.use('/applicant', applicantRoutes);
 
 module.exports = router;

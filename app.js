@@ -3,16 +3,12 @@ const path = require('path');
 const express = require('express');
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
 
 const routes = require('./routes');
+const fileUpload = require('./middlewares/fileUploadMiddleware');
 
-const Credentials = require("./models/credentials");
-const User = require("./models/users");
-const Applicant = require("./models/applicants");
-const Admin = require("./models/admins");
-const Recruiter = require("./models/recruiters");
-const Job = require("./models/jobs");
-const JobApplication = require("./models/jobApplications");
+
 
 const Sequelize = require("./models/index").Sequelize;
 
@@ -41,15 +37,36 @@ app.use(
     })
 );
 
+
+
 // express configuration
 app.use(express.static('assets'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// file upload for images and pdf
+app.use(
+    multer({
+        storage: fileUpload.imageCheck,
+        limits: {
+            fileSize: 1024 * 1024 * 2,
+        },
+    }).single("photo")
+);
+
+app.use(
+    multer({
+        storage: fileUpload.pdfCheck,
+        limits: {
+            fileSize: 1024 * 1024 * 2,
+        },
+    }).single("pdf")
+)
+
 app.use('/', routes);
 
 Sequelize.sync({
-    force: true,
+    force: false,
 })
     .then(() => {
         console.log("Database connection has been established successfully.");

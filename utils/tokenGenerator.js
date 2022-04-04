@@ -22,7 +22,7 @@ const generateToken = (credential, user) => {
         expiresIn: '1h',
     });
 
-    return 'Bearer' + accessToken;
+    return 'Bearer ' + accessToken;
 };
 
 const verifyToken = (token) => {

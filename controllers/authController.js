@@ -145,7 +145,13 @@ const register = async (req, res) => {
 };
 
 const deAuth = (req, res) => {
+    let user = req.session.user;
 
+    delete req.session;
+    res.clearCookie("getscouted");
+
+    // req.session.message = "Logout Successful!";
+    res.redirect("/login");
 };
 
 module.exports = {

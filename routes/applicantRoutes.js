@@ -8,4 +8,6 @@ const roleValidation = require('../middlewares/roleMiddleware');
 router.post('/', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.profileCreateUpdate);
 router.post('/verify/:uid', authMiddleware.isAuthenticated, roleValidation.isAdmin, applicantController.verifyProfile);
 
+router.get('/profile/edit', applicantController.profileUpdateView);
+
 module.exports = router;

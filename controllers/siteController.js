@@ -18,9 +18,6 @@ const signupPage = (req, res) => {
     res.render('signup', { url: '/signup', title: 'Signup' });
 };
 
-const candidateProfilePage = (req, res) => {
-    res.render('candidate-profile', { url: '/candidate-profile', title: 'Candidate-profile' });
-};
 
 module.exports = {
     landingPage,
@@ -28,6 +25,5 @@ module.exports = {
     contactPage,
     loginPage,
     signupPage,
-    candidateProfilePage,
 }
 

@@ -82,7 +82,12 @@ const verifyProfile = (req, res) => {
 		});
 };
 
+const profileUpdateView = (req, res) => {
+	res.render('applicant/editProfile', { url: "/applicant/profile/edit", title: "Create profile" });
+}
+
 module.exports = {
-  profileCreateUpdate,
-  verifyProfile,
+	profileCreateUpdate,
+	verifyProfile,
+	profileUpdateView,
 };

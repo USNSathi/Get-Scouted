@@ -12,25 +12,21 @@ const User = Sequelize.define("users", {
         primaryKey: true,
         allowNull: false,
     },
-    firstName: {
+    name: {
         type: Datatype.STRING,
         allowNull: false,
-    },
-    lastName: {
-        type: Datatype.STRING,
-        allowNull: true,
     },
     photo: {
         type: Datatype.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     phone: {
         type: Datatype.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     address: {
         type: Datatype.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     cid: {
         type: Datatype.UUID,
@@ -39,6 +35,7 @@ const User = Sequelize.define("users", {
 
         references: {
             model: Credential,
+            as: "credential",
             key: "id",
         },
         onUpdate: "CASCADE",

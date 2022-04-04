@@ -1,74 +1,75 @@
 body{
+    margin:0;
+    padding:0;
     background-color: #fff;
     font-family: 'Roboto', sans-serif;
+    background-position: center;
 }
-
-.signup-body{
-
-padding-top: 120px;
-
-}
-
-.signup-box{
-    width:360px;
-    height: 620 px;
-    margin: auto;
-    background-color: #28282B;
-    border: 2px solid #28282B;
-    border-radius: 3px;
-    padding-top: 20px;
-    padding-left: 9px;
-}
-h1{
-    text-align: center;
-    color: #fff;
-    padding-top: 15px;
-}
-
-form{
+.sign-up-form{
     width:300px;
-    margin-left: 20px;
+    background: #28282B;
+    border: 2px solid #28282B;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); 
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
 }
-form label{
+.sign-up-form h1{
+    color:#fff;
+    margin-bottom: 30px;
+}
+.sign-up-form label{
     display:flex;
     margin-top: 20px;
     font-size: 18px;
     color: #fff;
 }
-form input{
+
+.sign-up-form #notvalid{
+    color: #fff;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.input-box{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px -10px;
     width: 100%;
-    padding: 7px;
-    border-radius: 6px;
+    border: 1px solid #28282B;
     outline: none;
 }
-input[type="submit"]{
-    width: 300px;
-    height:35px;
-    margin-top: 20px;
-    border: none;
-    background-color: #d8d8d8;
-    color:#000;
-    font-size: 18px;
+button{
+    color:black;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 10px 0;
+    border:none;
+    outline: none;
+    cursor: pointer;
 }
-input[type="submit"]:hover{
-     color: white;
-     background-color: gray; /*#9ba3a4*/
+.signup-btn{
+    background-color: #fff;
 }
-
-.button{
-    display: flex;
+.signup-btn:hover{
+    background-color: black;
+    color: white;
 }
-
 p{
-    text-align: center;
     color: #fff;
     padding-top: 20px;
     font-size: 15px;
 }
-.para-2{
-    text-align: center;
-    color: #fff;
+
+a{
+    color:#fff;
 }
-.para-2:hover{
-    color: red;
+a:hover{
+    color:red;
+}
+hr{
+    margin-top: 20px;
+    width: 80%;
 }

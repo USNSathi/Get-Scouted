@@ -16,6 +16,10 @@ const Applicant = Sequelize.define('applicants', {
 		type: Datatype.STRING,
 		allowNull: false,
 	},
+	dob: {
+		type: Datatype.DATEONLY,
+		allowNull: false,
+	},
 	skill: {
 		type: Datatype.STRING,
 		allowNull: false,

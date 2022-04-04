@@ -4,7 +4,10 @@ const { JWT_SECRET } = require('../config/server.config');
 
 const generateToken = (credential, user) => {
 
+    credential.isBan ? credential.isBan = true : credential.isBan = false;
+
     delete credential.password;
+    delete credential.isBan;
     delete credential.createdAt;
     delete credential.updatedAt;
 

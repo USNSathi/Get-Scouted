@@ -12,6 +12,12 @@ const login = (req, res) => {
         }
 
         else if (credential.validPassword(password)) {
+
+            if (credential.isBan) {
+                res.locals.message = 'You are banned';
+                return res.redirect('/notice');
+            }
+
             res.locals.credential = {
                 id: credential.id,
                 email: credential.email,
@@ -24,7 +30,6 @@ const login = (req, res) => {
                     photo: user.photo,
                     phone: user.phone,
                     role: user.role,
-                    isBan: user.isBan,
                 };
 
                 const token = tokenGenerator.generateToken(
@@ -59,19 +64,58 @@ const login = (req, res) => {
     });
 };
 
-const register = (req, res) => {
-    const { email, password, } = req.body;
+const register = async (req, res) => {
+    const { name, email, password, confirmPassword, role } = req.body;
 
-    // api testing starts
-    console.log(req.body);
 
-    res.status(200);
-    res.send({
-        email: email,
-        password: password
-    })
-    // api testing ends
+    if (password !== confirmPassword) {
+        res.status(403);
+        res.send({
+            message: 'Passwords do not match'
+        });
+        return;
+    }
 
+    await Credentials.findOne({
+        where: {
+            email: email,
+        },
+    }).then(credential => {
+        if (credential) {
+            res.status(403);
+            res.send({
+                message: 'Email already exists'
+            });
+            return;
+        }
+
+        Credentials.create({
+            email,
+            password,
+            role,
+        }).then(credential => {
+            // console.log(credential);
+
+            User.create({
+                cid: credential.id,
+                name: name,
+            }).then(user => {
+                // res.locals.message = 'Registration success';
+                res.status(201);
+                res.send({
+                    message: 'Registration success'
+                });
+            });
+        });
+
+    }).catch(error => {
+        console.log(error);
+        res.locals.message = 'Registration failed';
+        res.send({
+            message: 'Registration failed',
+        })
+
+    });
 };
 
 const deAuth = (req, res) => {

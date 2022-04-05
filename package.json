@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "deploy": "pm2 start yarn --interpreter bash --name get-scouted -- dev"
   },
   "keywords": [
     "cse482"

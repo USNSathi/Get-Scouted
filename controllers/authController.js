@@ -31,6 +31,7 @@ const login = (req, res) => {
             res.locals.credential = {
                 id: credential.id,
                 email: credential.email,
+                role: credential.role,
             };
 
             User.findOne({
@@ -61,27 +62,29 @@ const login = (req, res) => {
                     signed: true,
                 });
 
-                res.send({
-                    message: 'Login success',
-                    token: token,
-                    user: {
-                        id: user.id,
-                        name: user.name,
-                        photo: user.photo,
-                        phone: user.phone,
-                        role: user.role,
-                    },
-                });
+                // res.send({
+                //     message: 'Login success',
+                //     token: token,
+                //     user: {
+                //         id: user.id,
+                //         name: user.name,
+                //         photo: user.photo,
+                //         phone: user.phone,
+                //         role: user.role,
+                //     },
+                // });
 
-                // if (user.role === 'recruiter') {
-                //     res.redirect('/recruit');
-                // } else if (user.role === 'applicant') {
-                //     res.redirect('/apply');
-                // } else if (user.role === 'admin') {
-                //     res.redirect('/admin');
-                // } else {
-                //     res.redirect('/notfound');
-                // }
+                // console.log(user.dataValues);
+
+                if (res.locals.credential.role === 'recruiter') {
+                    res.redirect('/recruit');
+                } else if (res.locals.credential.role === 'applicant') {
+                    res.redirect('/applicant/');
+                } else if (res.locals.credential.role === 'admin') {
+                    res.redirect('/admin');
+                } else {
+                    res.redirect('/notfound');
+                }
             }).catch(err => {
                 res.locals.message = 'Login failed';
                 res.locals.user = {};
@@ -145,9 +148,14 @@ const register = async (req, res) => {
 };
 
 const deAuth = (req, res) => {
-    let user = req.session.user;
+    let user = res.locals.data.user;
 
-    delete req.session;
+    if (!user) {
+        res.session.message = 'You are not logged in';
+        res.redirect("/error");
+    }
+
+    delete res.session;
     res.clearCookie("getscouted");
 
     // req.session.message = "Logout Successful!";

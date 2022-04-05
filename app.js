@@ -8,8 +8,6 @@ const multer = require("multer");
 const routes = require('./routes');
 const fileUpload = require('./middlewares/fileUploadMiddleware');
 
-
-
 const Sequelize = require("./models/index").Sequelize;
 
 const config = require("./config/server.config");

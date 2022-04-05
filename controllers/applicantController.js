@@ -86,8 +86,13 @@ const profileUpdateView = (req, res) => {
 	res.render('applicant/editProfile', { url: "/applicant/profile/edit", title: "Create profile" });
 }
 
+const dashboardView = (req, res) => {
+	res.render('applicant/index', { url: "/applicant", title: "Dashboard", isLogin: res.locals.isLogin });
+}
+
 module.exports = {
 	profileCreateUpdate,
 	verifyProfile,
 	profileUpdateView,
+	dashboardView,
 };

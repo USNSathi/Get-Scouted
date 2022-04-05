@@ -29,11 +29,13 @@
                     <link rel="stylesheet" href="/css/contact-us.css">
                     <% } else if (url=='/applicant/profile/edit' ) {%>
                         <link rel="stylesheet" href="/css/profile.css">
-                        <% } %>
+                        <% } else if (url=='/applicant' ) {%>
+                            <link rel="stylesheet" href="/css/candidate-dashboard.css">
+                            <% } %>
 
-                            <!-- Icon -->
-                            <link rel="stylesheet" type="text/css"
-                                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                                <!-- Icon -->
+                                <link rel="stylesheet" type="text/css"
+                                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -47,27 +49,35 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/jobs">Jobs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/companies">Company</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/aboutus">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact Us</a>
-                    </li>
-                </ul>
-                <div class="navbar-text">
-                    <a href="/login" class="link-dark">Login</a> <span> or </span>
-                    <a href="/signup" class="link-dark">Sign up</a>
-                </div>
+                <% if (url.includes('/applicant')) { %>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 invisible">
+                        <% } else { %>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 visible">
+                                <% } %>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/jobs">Jobs</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/companies">Company</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/aboutus">About Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/contact">Contact Us</a>
+                                    </li>
+                            </ul>
+                            <div class="navbar-text">
+                                <% if (!isLogin) { %>
+                                    <a href="/login" class="link-dark">Login</a> <span> or </span>
+                                    <a href="/signup" class="link-dark">Sign up</a>
+                                    <% } else { %>
+                                        <a href="/auth/logout" class="link-dark">Logout</a>
+                                        <% } %>
+                            </div>
             </div>
         </div>
     </nav>

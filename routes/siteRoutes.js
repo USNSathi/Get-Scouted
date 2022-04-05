@@ -2,15 +2,20 @@ const router = require('express').Router();
 
 const siteController = require('../controllers/siteController');
 
-router.get('/', siteController.landingPage);
+const authMiddleware = require('../middlewares/authMiddleWare.js');
 
-router.get('/aboutus', siteController.aboutPage);
 
-router.get('/contact', siteController.contactPage);
+router.get('/', authMiddleware.isLogin, siteController.landingPage);
 
-router.get('/login', siteController.loginPage);
+router.get('/aboutus', authMiddleware.isLogin, siteController.aboutPage);
 
-router.get('/signup', siteController.signupPage);
+router.get('/contact', authMiddleware.isLogin, siteController.contactPage);
+
+router.get('/login', authMiddleware.isLogin, siteController.loginPage);
+
+router.get('/signup', authMiddleware.isLogin, siteController.signupPage);
+
+router.get('/error', authMiddleware.isLogin, siteController.errorPage);
 
 module.exports = router;
 

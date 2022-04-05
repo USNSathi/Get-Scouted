@@ -1,5 +1,5 @@
 const isAdmin = (req, res, next) => {
-	const { role } = res.locals.user;
+	const { role } = res.locals.data.credential;
 
 	if (role === 'admin') {
 		return next();
@@ -10,7 +10,7 @@ const isAdmin = (req, res, next) => {
 };
 
 const isRecruiter = (req, res, next) => {
-	const { role } = res.locals.user;
+	const { role } = res.locals.data.credential;
 
 	if (role === 'recruiter') {
 		return next();
@@ -21,7 +21,7 @@ const isRecruiter = (req, res, next) => {
 };
 
 const isApplicant = (req, res, next) => {
-	const { role } = res.locals.user;
+	const { role } = res.locals.data.credential;
 
 	if (role === 'applicant') {
 		return next();
@@ -32,7 +32,7 @@ const isApplicant = (req, res, next) => {
 };
 
 module.exports = {
-  isAdmin,
-  isRecruiter,
-  isApplicant
+	isAdmin,
+	isRecruiter,
+	isApplicant
 };

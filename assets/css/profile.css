@@ -40,12 +40,6 @@
     cursor: pointer;
 }
 
-.labels-1 {
-    font-size: 17px;
-    padding-right: 134px;
+.labels{
+    margin-top: 20px;
 }
-
-.labels-2{
-    margin-top: 10px;
-}
-

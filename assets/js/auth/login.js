@@ -17,7 +17,7 @@ $(document).ready(function () {
             success: function (response) {
 
                 console.log(response);
-                if (response.success) {
+                if (response.redirect) {
                     window.location.href = response.redirect;
                 } else {
                     $('#message').text(response.message);

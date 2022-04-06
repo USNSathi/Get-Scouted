@@ -8,7 +8,7 @@ const profileCreateUpdate = (req, res) => {
 	// and save it to the database
 
 
-	const { path } = req.file ? req.file : '';
+	var { path } = req.file ? req.file : '';
 
 	const uid = res.locals.data.user.id;
 	const { phone, address } = req.body;
@@ -39,7 +39,6 @@ const profileCreateUpdate = (req, res) => {
 				currentCompany: currentCompany,
 				currentPosition: currentPosition,
 				uid: uid,
-
 			},
 			{
 				where: {
@@ -49,24 +48,27 @@ const profileCreateUpdate = (req, res) => {
 		)
 			.then((applicant, isCreated) => {
 				// console.log("New user : ", isCreated, " Applicant : ", applicant);
-				if (isCreated) {
-					res.redirect('/applicant/');
-				} else {
-					res.status(201);
-					res.send({
-						message: 'Applicant updated successfully',
-						applicant: applicant,
-					});
-				}
+				// if (isCreated) {
+				res.redirect('/applicant/');
+				// }
+				// else {
+				// 	res.status(201);
+				// 	res.send({
+				// 		message: 'Applicant updated successfully',
+				// 		applicant: applicant,
+				// 	});
+				// }
 			})
 			.catch((err) => {
 				// console.error(err);
 
-				res.status(500);
-				res.send({
-					message: 'Error creating applicant',
-					applicant: {},
-				});
+				req.session.message = err.message;
+				res.redirect('/error');
+				// res.status(500);
+				// res.send({
+				// 	message: 'Error creating applicant',
+				// 	applicant: {},
+				// });
 			});
 
 	}).catch(err => {

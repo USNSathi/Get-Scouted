@@ -1,7 +1,7 @@
 const Recruiter = require('../models/recruiters');
 const User = require('../models/users');
 
-const profileCreateUpdate = (req, res) => {
+const profileCreateUpdate = async (req, res) => {
 
     const uid = res.locals.data.user.id;
     const { phone, address } = req.body;
@@ -18,6 +18,7 @@ const profileCreateUpdate = (req, res) => {
             id: uid
         }
     }).then(() => {
+
         Recruiter.upsert({
             companyName: companyName,
             status: status,
@@ -36,8 +37,9 @@ const profileCreateUpdate = (req, res) => {
                 uid: uid,
             },
         }).then((recruiter, isCreated) => {
-            // console.log("New user : ", isCreated, " Recruiter : ", recruiter);
+            console.log("New user : ", isCreated, " Recruiter : ", recruiter);
             res.redirect('/recruiter/');
+
         }).catch((err) => {
             req.session.message = err.message;
             res.redirect('/error');
@@ -50,6 +52,7 @@ const profileCreateUpdate = (req, res) => {
         res.redirect('/error');
 
     });
+
 
     // // check data is valid
     // // console.log(req.body);

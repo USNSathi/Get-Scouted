@@ -16,15 +16,49 @@ const Recruiter = Sequelize.define("recruiters", {
         type: Datatype.STRING,
         allowNull: false,
     },
+
+    contractNumber: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
+
+    yearOfEstablishment: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
+
     companyType: {
         type: Datatype.STRING,
         allowNull: false,
         defaultValue: "open", // open, blocked, jobholder
     },
-    location: {
+
+    country: {
         type: Datatype.STRING,
         allowNull: false,
-        defaultValue: "Dhaka, Bangladesh"
+        defaultValue: "Bangladesh"
+    },
+
+    region: {
+        type: Datatype.STRING,
+        allowNull: false,
+        defaultValue: "Dhaka"
+    },
+    companyAddress: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
+    businessDescription: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
+    tradingLicense: {
+        type: Datatype.STRING,
+        allowNull: false,
+    },
+    websiteURL: {
+        type: Datatype.STRING,
+        allowNull: false,
     },
     uid: {
         type: Datatype.UUID,

@@ -8,7 +8,10 @@ const roleValidation = require('../middlewares/roleMiddleware');
 router.post('/', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.profileCreateUpdate);
 router.post('/verify/:uid', authMiddleware.isAuthenticated, roleValidation.isAdmin, applicantController.verifyProfile);
 
-router.get('/profile/edit', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.profileUpdateView);
 router.get('/', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.dashboardView);
+router.get('/profile', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.profileView);
+router.get('/profile/edit', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.profileUpdateView);
+router.get('/jobs', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.jobsView);
+router.get('/jobs/applications', authMiddleware.isAuthenticated, roleValidation.isApplicant, applicantController.applicationView);
 
 module.exports = router;

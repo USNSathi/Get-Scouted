@@ -29,6 +29,10 @@ const Applicant = Sequelize.define('applicants', {
 		allowNull: false,
 		defaultValue: 'open', // open, blocked, jobholder
 	},
+	education: {
+		type: Datatype.STRING,
+		allowNull: false,
+	},
 	region: {
 		type: Datatype.STRING,
 		allowNull: false,

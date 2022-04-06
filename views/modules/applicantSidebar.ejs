@@ -1,0 +1,62 @@
+<div class="sidebar">
+    <ul>
+        <% if(url=="/applicant" ){ %>
+            <li class="active">
+                <% }else { %>
+            <li>
+                <% } %>
+                    <a href="/applicant/">
+                        <i class="fa-solid fa-house-user"></i>
+                        <div class="title"> Home</div>
+                    </a>
+            </li>
+            <% if(url=="/applicant/profile" ){ %>
+                <li class="active">
+                    <% }else { %>
+                <li>
+                    <% } %>
+                        <a href="/applicant/profile">
+                            <i class="fas fa-user"></i>
+                            <div class="title"> Profile</div>
+                        </a>
+                </li>
+                <% if(url=="/applicant/jobs" ){ %>
+                    <li class="active">
+                        <% }else { %>
+                    <li>
+                        <% } %>
+                            <a href="/applicant/jobs">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <div class="title"> Jobs</div>
+                            </a>
+                    </li>
+
+                    <% if(url=="/applicant/jobs/applications" ){ %>
+                        <li class="active">
+                            <% }else { %>
+                        <li>
+                            <% } %>
+                                <a href="/applicant/jobs/applications">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    <div class="title"> Applications</div>
+                                </a>
+                        </li>
+
+                        <% if(url=="/applicant/profile/edit" ){ %>
+                            <li class="active">
+                                <% }else { %>
+                            <li>
+                                <% } %>
+                                    <a href="/applicant/profile/edit">
+                                        <i class="fa-solid fa-user-pen"></i>
+                                        <div class="title"> Profile Update</div>
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="/auth/logout">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <div class="title"> Log Out</div>
+                                </a>
+                            </li>
+    </ul>
+</div>

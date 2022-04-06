@@ -35,28 +35,26 @@ app.use(
     })
 );
 
-
-
 // express configuration
 app.use(express.static('assets'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // file upload for images and pdf
-app.use(
-    multer({
-        storage: fileUpload.imageCheck,
-        limits: {
-            fileSize: 1024 * 1024 * 2,
-        },
-    }).single("photo")
-);
+// app.use(
+//     multer({
+//         storage: fileUpload.imageCheck,
+//         limits: {
+//             fileSize: 1024 * 1024 * 2,
+//         },
+//     }).single("photo")
+// );
 
 app.use(
     multer({
         storage: fileUpload.pdfCheck,
         limits: {
-            fileSize: 1024 * 1024 * 2,
+            fileSize: 1024 * 1024 * 5, // 5MB
         },
     }).single("pdf")
 )

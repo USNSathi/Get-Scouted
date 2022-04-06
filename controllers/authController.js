@@ -17,6 +17,7 @@ const login = (req, res) => {
     }).then(credential => {
         if (!credential) {
             res.locals.message = 'Login failed';
+            res.redirect("/error");
         }
 
         else if (credential.validPassword(password)) {
@@ -77,7 +78,7 @@ const login = (req, res) => {
                 // console.log(user.dataValues);
 
                 if (res.locals.credential.role === 'recruiter') {
-                    res.redirect('/recruit');
+                    res.redirect('/recruiter');
                 } else if (res.locals.credential.role === 'applicant') {
                     res.redirect('/applicant/');
                 } else if (res.locals.credential.role === 'admin') {

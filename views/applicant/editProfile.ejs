@@ -12,33 +12,37 @@
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5" width="150px"
                     src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                <span class="font-weight-bold">user name</span>
-                <span class="text-black-50">user@mail.com</span><span> </span>
+                <span class="font-weight-bold">
+                    <%= data.user.name %>
+                </span>
+                <span class="text-black-50">
+                    <%= data.credential.email %>
+                </span><span> </span>
             </div>
             <!-- image part ends-->
             <!-- </div> -->
 
-            <from>
+            <form action="/applicant/" method="post" id="editProfileForm" enctype="multipart/form-data">
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-12">
-                        <label class="labels">Name</label><input type="text" class="form-control" placeholder="Name"
-                            value="">
+                        <label class="labels">Name</label><input type="text" class="form-control" name="name"
+                            placeholder="Name" value="<%= data.user.name %>">
                     </div>
                 </div>
                 <div class="row mt-3">
 
                     <div class="col-md-12">
-                        <label class="labels">Mobile Number</label><input type="text" class="form-control"
-                            placeholder="enter phone number" value="">
+                        <label class="labels">Address</label><input type="text" class="form-control" name="address"
+                            placeholder="Address" value="<%= data.user.phone %>">
                     </div>
 
                     <div class="col-md-12">
-                        <label class="labels">Address</label><input type="text" class="form-control"
-                            placeholder="enter address" value="">
+                        <label class="labels">Phone</label><input type="text" class="form-control" name="phone"
+                            placeholder="enter phone number" value="<%= data.user.phone %>">
                     </div>
 
                     <div class="col-md-12">
@@ -47,84 +51,91 @@
                     </div>
 
                     <div class="col-md-12">
-                        <label class="labels">Email ID</label><input type="text" class="form-control"
-                            placeholder="enter email id" value="">
+                        <label class="labels">Email ID</label><input type="text" class="form-control" name="emailId"
+                            value="<%= data.credential.email %>" readonly>
                     </div>
 
                     <div class="col-md-12">
-                        <label class="labels">Education</label><input type="text" class="form-control"
+                        <label class="labels">Education</label><input type="text" class="form-control" name="education"
                             placeholder="education" value="">
                     </div>
 
                     <div class="col-md-12">
                         <label class="labels">Skills</label>
-                        <select name="selected_Cat" id="selected_Cat" class="form-control from-control-login">
-                            <option value="-1" selected="">Select</option>
-                            <option value="1">Education/Training</option>
-                            <option value="2">Bank/Non-Bank Fin. Institution</option>
-                            <option value="3">Accounting/FinanceEducation/Training</option>
-                            <option value="4">Commercial/Supply Chain</option>
-                            <option value="5">Engineer/Architect</option>
-                            <option value="6">IT/Telecommunication</option>
-                            <option value="7">General Management/Admin</option>
-                            <option value="8">Garments/Textile</option>
-                            <option value="9">Marketing/Sales</option>
-                            <option value="10">Media/Advertisement/Event Mgt.</option>
-                            <option value="11">Medical/Pharma</option>
-                            <option value="12">NGO/Development</option>
-                            <option value="13">Research/Consultancy</option>
-                            <option value="14">Secretary/Receptionist</option>
-                            <option value="15">Data Entry/Operator/BPO</option>
-                            <option value="16">Customer Support/Call Centre</option>
-                            <option value="17">HR/Org. Development</option>
-                            <option value="18">Design/Creative</option>
-                            <option value="19">Production/Operation</option>
-                            <option value="20">Hospitality/ Travel/ Tourism</option>
-                            <option value="21">Beauty Care/ Health &amp; Fitness</option>
-                            <option value="22">Law/Legal</option>
-                            <option value="23">Electrician/ Construction/ Repair</option>
-                            <option value="24">Security/Support Service</option>
-                            <option value="25">Driving/Motor Technician</option>
-                            <option value="26">Agro (Plant/Animal/Fisheries)</option>
+                        <select name="skill" id="selected_Cat" class="form-control from-control-login">
+                            <option value="none" selected="">Select</option>
+                            <option value="Education/Training">Education/Training</option>
+                            <option value="Bank/Non-Bank Fin. Institution">Bank/Non-Bank Fin. Institution</option>
+                            <option value="Accounting/FinanceEducation/Train">Accounting/FinanceEducation/Training
+                            </option>
+                            <option value="Commercial/Supply Chain">Commercial/Supply Chain</option>
+                            <option value="Engineer/Architect">Engineer/Architect</option>
+                            <option value="IT/Telecommunication">IT/Telecommunication</option>
+                            <option value="General Management/Admin">General Management/Admin</option>
+                            <option value="Garments/Textile">Garments/Textile</option>
+                            <option value="Marketing/Sales">Marketing/Sales</option>
+                            <option value="Media/Advertisement/Event Mgt.">Media/Advertisement/Event Mgt.</option>
+                            <option value="Medical/Pharma">Medical/Pharma</option>
+                            <option value="NGO/Development">NGO/Development</option>
+                            <option value="Research/Consultancy">Research/Consultancy</option>
+                            <option value="Secretary/Receptionist">Secretary/Receptionist</option>
+                            <option value="Data Entry/Operator/BPO">Data Entry/Operator/BPO</option>
+                            <option value="Customer Support/Call Centre">Customer Support/Call Centre</option>
+                            <option value="HR/Org. Development">HR/Org. Development</option>
+                            <option value="Design/Creative">Design/Creative</option>
+                            <option value="Production/Operation">Production/Operation</option>
+                            <option value="Hospitality/ Travel/ Tourism">Hospitality/ Travel/ Tourism</option>
+                            <option value="Beauty Care/ Health & amp; Fitness">Beauty Care/ Health & amp; Fitness
+                            </option>
+                            <option value="Law/Legal">Law/Legal</option>
+                            <option value="Electrician/ Construction/ Repair">Electrician/ Construction/ Repair</option>
+                            <option value="Security/Support Service">Security/Support Service</option>
+                            <option value="Driving/Motor Technician">Driving/Motor Technician</option>
+                            <option value="Agro (Plant/Animal/Fisheries)">Agro (Plant/Animal/Fisheries)</option>
                         </select>
                     </div>
 
                     <div class="col-md-12">
                         <label class="labels">Current Company</label><input type="text" class="form-control"
-                            placeholder="Current Company" value="">
+                            name="currentCompany" placeholder="Current Company" value="">
                     </div>
 
                     <div class="col-md-12">
                         <label class="labels">Current Position</label><input type="text" class="form-control"
-                            placeholder="Current Position" value="">
+                            name="currentPosition" placeholder="Current Position" value="">
                     </div>
 
                     <div class="col-md-12">
-                        <label class="labels">Upload CV</label><input type="file" class="form-control" placeholder="CV"
-                            value="">
+                        <label class="labels">Upload CV</label><input name="pdf" type="file" class="form-control"
+                            name="pdf" placeholder="CV" value="">
                     </div>
 
                     <div class="col-md-12">
-                        <label class="labels">Status</label><input type="text" class="form-control" placeholder="Status"
-                            value="">
+                        <label class="labels">Status</label><input type="text" name="status" class="form-control"
+                            name="status" placeholder="Status" value="">
                     </div>
 
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control"
-                            placeholder="country" value="">
+                            name="country" placeholder="country" value="">
                     </div>
 
-                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text"
-                            class="form-control" value="" placeholder="state">
+                    <div class="col-md-6"><label class="labels">Region</label><input type="text" class="form-control"
+                            name="region" value="" placeholder="state">
                     </div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-PRIMARI profile-button" type="button">Save
+                <div class="mt-5 text-center"><button class="btn btn-PRIMARI profile-button" type="submit">Save
                         Profile</button></div>
-            </from>
+            </form>
 
         </div>
     </div>
+
+    <script src="/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/js/applicant/profile.js"></script>
+
+    </body>
 
     <!--profile ends-->
 

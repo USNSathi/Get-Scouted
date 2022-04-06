@@ -1,0 +1,104 @@
+<%- include('../modules/head') %>
+
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-md-3">
+                <%- include('../modules/applicantSidebar') %>
+
+            </div>
+            <div class="col-md-9">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div>
+                        <h1 class="text-center">Profile</h1>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="firstName">Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="No Name"
+                                        value="<%- data.user.name %>" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" i class="form-control" id="email"
+                                        placeholder="No Email" value="<%- data.credential.email %>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="No Phone"
+                                        contenteditable="false" value="<%- data.user.phone %>" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="No Address"
+                                        value="<%- data.user.address %>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Birthday</label><input type="date" id="birthday"
+                                    class="form-control" name="birthday" value="<%- data.applicant.dob %>" readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Education</label><input type="text" class="form-control"
+                                    name="education" placeholder="No Education" value="<%- data.applicant.education %>"
+                                    readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Skill</label><input type="text" class="form-control" name="skill"
+                                    placeholder="No Skill" value="<%- data.applicant.skill %>" readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="address">Country</label>
+                                    <input type="text" class="form-control" id="country" placeholder="No Country"
+                                        value="<%- data.applicant.country %>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="address">Region</label>
+                                    <input type="text" class="form-control" id="address" placeholder="No Region"
+                                        value="<%- data.applicant.region %>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Current Company</label><input type="text" class="form-control"
+                                    name="currentCompany" placeholder="No Current Company"
+                                    value="<%- data.applicant.currentCompany %>" readonly>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="labels">Current Position</label><input type="text" class="form-control"
+                                    name="currentPosition" placeholder="No Current Position"
+                                    value="<%- data.applicant.currentPosition %>" readonly>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="labels">Status</label><input type="text" name="status"
+                                    class="form-control" name="status" placeholder="No Status"
+                                    value="<%- data.applicant.status %>" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/vendor/bootstrap.bundle.min.js"></script>
+
+    </body>

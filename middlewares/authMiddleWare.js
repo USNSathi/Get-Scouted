@@ -71,6 +71,7 @@ const isLogin = (req, res, next) => {
 		accessToken = cookies && cookies.split(' ')[1];
 	} catch (err) {
 		res.locals.isLogin = false;
+		next();
 	}
 
 	jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET || config.JWT_SECRET, (err, decodeData) => {
@@ -80,9 +81,9 @@ const isLogin = (req, res, next) => {
 			res.locals.isLogin = false;
 		} else {
 			res.locals.isLogin = true;
-
-			next();
 		}
+
+		next();
 	});
 };
 

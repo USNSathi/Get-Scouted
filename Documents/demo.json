@@ -1,0 +1,37 @@
+{
+    "url": "/recruiter/profile",
+    "title": "Profile",
+    "isLogin": true,
+    "data": {
+        "credential": {
+            "id": "6adf8e6a-0c1b-490b-a65e-673bf4afd487",
+            "email": "sadia.nasrin10@northsouth.edu",
+            "role": "recruiter"
+        },
+        "user": {
+            "id": "7ee2846d-66de-4822-b0f4-47d9985ea40b",
+            "name": "Sadia",
+            "photo": null,
+            "phone": null,
+            "address": null
+        },
+        "iat": 1649219963,
+        "exp": 1649223563,
+        "recruiter": {
+            "id": "4716dbab-7246-4871-9054-b77250aa2e5b",
+            "companyName": "hsgajgd",
+            "contractNumber": "23456",
+            "yearOfEstablishment": "2345",
+            "companyType": "open",
+            "country": "Bangladesh",
+            "region": "Dhaka",
+            "companyAddress": "House : 14/ka, Madborbari Mosjid Road, Jagonnathpur, Vatara, Bashundhara R/A",
+            "businessDescription": "cjeckebc",
+            "tradingLicense": "456",
+            "websiteURL": "jdhd.dd.dd",
+            "uid": "7ee2846d-66de-4822-b0f4-47d9985ea40b",
+            "createdAt": "2022-04-06T04:42:07.000Z",
+            "updatedAt": "2022-04-06T04:51:19.000Z"
+        }
+    }
+}

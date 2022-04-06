@@ -83,8 +83,8 @@ const profileView = async (req, res) => {
 
     res.locals.data.recruiter = recruiter;
 
-    // res.render('recruiter/profile', { url: "/recruiter/profile", title: "Profile", isLogin: res.locals.isLogin, data: data });
-    res.send({ url: "/recruiter/profile", title: "Profile", isLogin: res.locals.isLogin, data: data });
+    res.render('recruiter/profile', { url: "/recruiter/profile", title: "Profile", isLogin: res.locals.isLogin, data: data });
+    // res.send({ url: "/recruiter/profile", title: "Profile", isLogin: res.locals.isLogin, data: data });
 
 };
 

@@ -1,6 +1,7 @@
 .navbar{
     position: sticky; 
     top: 0px;
+    z-index: 3;
 }
 
 .navbar-brand{
@@ -99,5 +100,5 @@ font-size: 50px;
 }
 
 .footer{
-    margin-top: 200px;
+    margin-top: 31px;
 }

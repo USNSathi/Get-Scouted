@@ -31,7 +31,6 @@ const profileCreateUpdate = async (req, res) => {
             businessDescription: businessDescription,
             tradingLicense: tradingLicense,
             websiteURL: websiteURL,
-            uid: uid,
         }, {
             where: {
                 uid: uid,

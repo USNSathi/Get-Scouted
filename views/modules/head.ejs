@@ -27,8 +27,10 @@
                 <link rel="stylesheet" href="/css/about-us.css">
                 <% } else if (url=='/contact' ) {%>
                     <link rel="stylesheet" href="/css/contact-us.css">
-                    <% } else if (url=='/applicant/profile/edit' ) {%>
+                    <% } else if (url.includes('/applicant/profile/') ) {%>
                         <link rel="stylesheet" href="/css/profile.css">
+                        <link rel="stylesheet" href="/css/applicant-dash.css">
+
                         <% } else if (url.includes('/applicant') ) {%>
                             <link rel="stylesheet" href="/css/applicant-dash.css">
                             <% } else if (url=='/recruiter/profile/edit' ) {%>

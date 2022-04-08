@@ -9,7 +9,7 @@ $(document).ready(function () {
             data: form.serialize(),
             success: function (response) {
 
-                console.log(response);
+                // console.log(response);
                 if (response.redirect) {
                     window.location.href = response.redirect;
                 }

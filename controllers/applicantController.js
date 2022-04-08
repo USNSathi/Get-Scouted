@@ -1,23 +1,17 @@
 const Applicant = require('../models/applicants');
 const User = require('../models/users');
 
+const tokenGenerator = require('../utils/tokenGenerator');
+
 // user itself can perform this operation
 const profileCreateUpdate = (req, res) => {
-	// here
-	// get cv from req.files
-	// and save it to the database
-
-
-	var { path } = req.file ? req.file : '';
 
 	const uid = res.locals.data.user.id;
 	const { phone, address } = req.body;
 
 	const { status, region, country, currentPosition, currentCompany, birthday, education, skill } = req.body;
 
-	if (path != '') {
-		path = path.replace('assets', '');
-	}
+	// console.log(req.body);
 
 	User.update({
 		phone,
@@ -25,51 +19,117 @@ const profileCreateUpdate = (req, res) => {
 	}, {
 		where: {
 			id: uid
-		}
+		},
 	}).then(() => {
-		Applicant.upsert(
-			{
-				cv: path,
-				dob: birthday,
-				skill: skill,
-				status: status,
-				education: education,
-				region: region,
-				country: country,
-				currentCompany: currentCompany,
-				currentPosition: currentPosition,
-				uid: uid,
-			},
-			{
-				where: {
+
+		var url = '';
+		if (req.file) {
+			url = req.file.path.replace('assets', '');
+
+			Applicant.upsert(
+				{
+					cv: url,
+					dob: birthday,
+					skill: skill,
+					status: status,
+					education: education,
+					region: region,
+					country: country,
+					currentCompany: currentCompany,
+					currentPosition: currentPosition,
 					uid: uid,
 				},
-			}
-		)
-			.then((applicant, isCreated) => {
-				// console.log("New user : ", isCreated, " Applicant : ", applicant);
-				// if (isCreated) {
-				res.redirect('/applicant/');
-				// }
-				// else {
-				// 	res.status(201);
-				// 	res.send({
-				// 		message: 'Applicant updated successfully',
-				// 		applicant: applicant,
-				// 	});
-				// }
-			})
-			.catch((err) => {
-				// console.error(err);
+				{
+					where: {
+						uid: uid,
+					},
+				}
+			)
+				.then((applicant, isCreated) => {
+					// console.log("New user : ", isCreated, " Applicant : ", applicant);
+					// 
 
-				req.session.message = err.message;
-				res.redirect('/error');
-				// res.status(500);
-				// res.send({
-				// 	message: 'Error creating applicant',
-				// 	applicant: {},
-				// });
-			});
+					// update cookie
+					const user = res.locals.data.user;
+					user.phone = phone;
+					user.address = address;
+
+					const token = tokenGenerator.generateToken(res.locals.data.credential, user);
+
+					/*
+					* Clear previous cookie and set new cookie
+					*/
+					res.clearCookie('getscouted');
+
+					res.cookie('getscouted', token, {
+						maxAge: 12 * 60 * 60 * 1000, // 12 hour
+						httpOnly: true,
+						sameSite: true,
+						secure: true,
+						signed: true,
+					});
+
+					res.redirect('/applicant/');
+				})
+				.catch((err) => {
+					// console.error(err);
+
+					req.session.message = err.message;
+					res.redirect('/error');
+				});
+		} else {
+			Applicant.upsert(
+				{
+					cv: req.body.previousCV,
+					dob: birthday,
+					skill: skill,
+					status: status,
+					education: education,
+					region: region,
+					country: country,
+					currentCompany: currentCompany,
+					currentPosition: currentPosition,
+					uid: uid,
+				},
+				{
+					where: {
+						uid: uid,
+					},
+				}
+			)
+				.then((applicant, isCreated) => {
+					// console.log("New user : ", isCreated, " Applicant : ", applicant);
+					// 
+
+					// update cookie
+					const user = res.locals.data.user;
+					user.phone = phone;
+					user.address = address;
+
+					const token = tokenGenerator.generateToken(res.locals.data.credential, user);
+
+					/*
+					* Clear previous cookie and set new cookie
+					*/
+					res.clearCookie('getscouted');
+
+					res.cookie('getscouted', token, {
+						maxAge: 12 * 60 * 60 * 1000, // 12 hour
+						httpOnly: true,
+						sameSite: true,
+						secure: true,
+						signed: true,
+					});
+
+					res.redirect('/applicant/');
+				})
+				.catch((err) => {
+					// console.error(err);
+
+					req.session.message = err.message;
+					res.redirect('/error');
+				});
+		}
 
 	}).catch(err => {
 		console.log(err);
@@ -110,11 +170,32 @@ const verifyProfile = (req, res) => {
 		});
 };
 
-const profileUpdateView = (req, res) => {
+const profileCreateView = (req, res) => {
 
 	const data = res.locals.data;
 
 	res.render('applicant/editProfile', { url: "/applicant/profile/edit", title: "Create profile", data: data });
+}
+
+const profileUpdateView = async (req, res) => {
+
+	const data = res.locals.data;
+	const applicant = await Applicant.findOne({
+		where: {
+			uid: res.locals.data.user.id,
+		},
+	}).then((applicant) => {
+		return applicant;
+	}).catch((err) => {
+		return {};
+	});
+
+	if (!applicant) {
+		res.redirect('/error');
+	}
+	data.applicant = applicant;
+
+	res.render('applicant/updateProfile', { url: "/applicant/profile/update", title: "Update profile", data: data });
 }
 
 const dashboardView = (req, res) => {
@@ -140,10 +221,7 @@ const profileView = (req, res) => {
 			// console.log(data);
 			res.render('applicant/profile', { url: "/applicant/profile", title: "Profile", data: data });
 		}).catch((err) => {
-			res.status(500).json({
-				message: 'Error fetching applicant',
-				applicant: {},
-			});
+			res.redirect('/error');
 		});
 }
 
@@ -162,6 +240,7 @@ const applicationView = (req, res) => {
 module.exports = {
 	profileCreateUpdate,
 	verifyProfile,
+	profileCreateView,
 	profileUpdateView,
 	dashboardView,
 	profileView,

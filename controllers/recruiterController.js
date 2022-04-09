@@ -90,18 +90,43 @@ const profileView = async (req, res) => {
 
 };
 
+const createProfileView = (req, res) => {
+
+    const data = res.locals.data;
+
+    res.render('recruiter/editCompanyProfile', { url: "/recruiter/profile/edit", title: "Create Profile", isLogin: res.locals.isLogin });
+
+};
+
 const updateProfileView = (req, res) => {
 
     const data = res.locals.data;
 
-    res.render('recruiter/updateProfile', { url: "/recruiter/profile/edit", title: "Profile update", isLogin: res.locals.isLogin });
+    res.render('recruiter/updateCompanyProfile', { url: "/recruiter/profile/update", title: "Profile update", isLogin: res.locals.isLogin });
 
 };
+
+const jobsView = (req, res) => {
+    const data = res.locals.data;
+
+    res.render('recruiter/jobs', { url: "/recruiter/jobs", title: "Ongoing Jobs", isLogin: res.locals.isLogin });
+
+};
+
+const createJobView = (req, res) => {
+    const data = res.locals.data;
+
+    res.render('recruiter/jobPost', { url: "/recruiter/jobs/post", title: "Create Job", isLogin: res.locals.isLogin });
+}
 
 
 module.exports = {
     dashboardView,
+    createJobView,
+    jobsView,
     profileView,
+    createProfileView,
     updateProfileView,
+
     profileCreateUpdate,
 };

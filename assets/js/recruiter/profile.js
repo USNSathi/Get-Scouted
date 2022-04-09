@@ -5,7 +5,7 @@ $(document).ready(function () {
 
         $.ajax({
             url: '/recruiter/',
-            type: form.attr('method'),
+            type: post,
             data: form.serialize(),
             success: function (response) {
 

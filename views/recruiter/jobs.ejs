@@ -4,16 +4,32 @@
         <div class="row">
             <div class="col-md-3">
                 <%- include('modules/sidebar') %>
-
             </div>
+
             <div class="col-md-9">
-                <div class="d-flex align-items-center justify-content-center">
-                    <h1 class="text-center">All posted job</h1>
+
+                <div class="d-flex justify-content-between mt-3">
+                    <div>
+                        <h2>Our Posted Jobs</h2>
+                    </div>
+                    <div>
+                        <a href="/recruiter/jobs/post" class="btn btn-dark px-5">Add</a>
+                    </div>
                 </div>
+
+                <!-- for each loop -->
+                <% if(data.jobs.length> 0 ) { data.jobs.forEach((job, index) => { %>
+                    <%- include('modules/recruiterJobCard', {job, index}) %>
+                        <% }) } else { %>
+                            <h2>No Jobs Found.</h2>
+                            <% } %>
             </div>
         </div>
     </div>
+
     <script src="/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/js/recruiter/allJobs.js"></script>
 
     </body>
 

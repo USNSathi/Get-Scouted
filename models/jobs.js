@@ -59,18 +59,15 @@ const Job = Sequelize.define("jobs", {
         allowNull: false,
         defaultValue: false,
     },
-    rid: {
-        type: Datatype.UUID,
-        allowNull: false,
-        unique: true,
+});
 
-        references: {
-            model: Recruiter,
-            key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "RESTRICT",
-    },
+Job.belongsTo(Recruiter, {
+    foreignKey: 'rid',
+    allowNull: false,
+    as: 'jobCreator',
+
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
 });
 
 module.exports = Job;

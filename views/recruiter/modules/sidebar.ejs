@@ -1,34 +1,54 @@
 <div class="sidebar">
     <ul>
         <li>
-            <a href="/">
-                <i class="fas fa-clinic-medical"></i>
-                <div class="title"> Home</div>
-            </a>
+            <% if(url=="/recruiter" ) { %>
+                <a href="/recruiter" class="active">
+                    <% } else { %>
+                        <a href="/recruiter">
+                            <% } %>
+                                <i class="fas fa-clinic-medical"></i>
+                                <div class="title"> Home</div>
+                        </a>
         </li>
         <li>
-            <a href="/recruiter/jobs/post">
-                <i class="fas fa-th-large"></i>
-                <div class="title"> Post a Job</div>
-            </a>
+            <% if(url=="/recruiter/jobs/post" ) { %>
+                <a href="/recruiter/jobs/post" class="active">
+                    <% } else { %>
+                        <a href="/recruiter/jobs/post">
+                            <% } %>
+                                <i class="fas fa-th-large"></i>
+                                <div class="title"> Post a Job</div>
+                        </a>
         </li>
         <li>
-            <a href="/recruiter/jobs">
-                <i class="fas fa-check-double"></i>
-                <div class="title"> Job posts</div>
-            </a>
+            <% if(url=="/recruiter/jobs" ) { %>
+                <a href="/recruiter/jobs" class="active">
+                    <% } else { %>
+                        <a href="/recruiter/jobs">
+                            <% } %>
+                                <i class="fas fa-check-double"></i>
+                                <div class="title"> Job Circular</div>
+                        </a>
         </li>
         <li>
-            <a href="/recruiter/profile">
-                <i class="fas fa-cog"></i>
-                <div class="title"> Company</div>
-            </a>
+            <% if(url=="/recruiter/profile" ) { %>
+                <a href="/recruiter/profile" class="active">
+                    <% } else { %>
+                        <a href="/recruiter/profile">
+                            <% } %>
+                                <i class="fas fa-cog"></i>
+                                <div class="title"> Company</div>
+                        </a>
         </li>
         <li>
-            <a href="/recruiter/profile/update">
-                <i class="fas fa-question"></i>
-                <div class="title"> Edit Company</div>
-            </a>
+            <% if(url=="/recruiter/profile/update" ) { %>
+                <a href="/recruiter/profile/update" class="active">
+                    <% } else { %>
+                        <a href="/recruiter/profile/update">
+                            <% } %>
+                                <i class="fas fa-question"></i>
+                                <div class="title"> Edit Company</div>
+                        </a>
         </li>
         <li>
             <a href="/auth/logout">

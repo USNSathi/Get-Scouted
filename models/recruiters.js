@@ -16,8 +16,7 @@ const Recruiter = Sequelize.define("recruiters", {
         type: Datatype.STRING,
         allowNull: false,
     },
-
-    contractNumber: {
+    contactNumber: {
         type: Datatype.STRING,
         allowNull: false,
     },
@@ -60,18 +59,15 @@ const Recruiter = Sequelize.define("recruiters", {
         type: Datatype.STRING,
         allowNull: false,
     },
-    uid: {
-        type: Datatype.UUID,
-        allowNull: false,
-        unique: true,
+});
 
-        references: {
-            model: User,
-            key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "RESTRICT",
-    },
+Recruiter.belongsTo(User, {
+    foreignKey: 'uid',
+    allowNull: false,
+    as: 'jobgivers',
+
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
 });
 
 module.exports = Recruiter;

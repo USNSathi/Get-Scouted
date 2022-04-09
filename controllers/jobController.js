@@ -1,12 +1,19 @@
 const Job = require('../models/jobs');
 
-const create = (req, res) => {
-	const { title, description, type, placement, salary, location, vacancy, status, rid } = req.body;
+const create = async (req, res) => {
+	const rid = res.locals.data.recruiter.id;
+	const { title, description, deadline, type, placement, salary, location, vacancy, status } = req.body;
 
-	Job.upsert({
+	// console.log("CREATE JOB: ", res.locals.data);
+	// console.log(req.body);
+
+	// res.send(req.body);
+
+	await Job.create({
 		title: title,
 		description: description,
 		type: type,
+		deadline: deadline,
 		placement: placement,
 		salary: salary,
 		location: location,
@@ -14,23 +21,16 @@ const create = (req, res) => {
 		status: status,
 		rid: rid,
 	})
-		.then((job, isCreated) => {
-			if (isCreated) {
-				res.status(201);
-				res.send({
-					message: 'Job created successfully',
-					job: job,
-				});
-			} else {
-				res.status(201);
-				res.send({
-					message: 'Job updated successfully',
-					job: job,
-				});
-			}
+		.then((job) => {
+			res.status(201);
+			res.send({
+				message: 'Job created successfully',
+				job: job,
+			});
+
 		})
 		.catch((err) => {
-			// console.error(err);
+			console.error(err);
 
 			res.status(500);
 			res.send({

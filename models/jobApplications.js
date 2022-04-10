@@ -13,39 +13,30 @@ const JobApplication = Sequelize.define("jobApplications", {
         primaryKey: true,
         allowNull: false,
     },
-    status: {
-        type: Datatype.STRING,
-        allowNull: false,
-        defaultValue: "open", // open, filled, removed, closed
-    },
+
     result: {
         type: Datatype.STRING,
-        allowNull: true,
-    },
-    jobId: {
-        type: Datatype.UUID,
         allowNull: false,
-        unique: false,
-
-        references: {
-            model: Job,
-            key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "RESTRICT",
+        defaultValue: 'pending',       // 'pending', 'rejected', 'accepted'
     },
-    applicantId: {
-        type: Datatype.UUID,
-        allowNull: false,
-        unique: false,
+});
 
-        references: {
-            model: Applicant,
-            key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "RESTRICT",
-    },
+Job.belongsToMany(Applicant, {
+    through: JobApplication,
+    as: 'individualApplicant',
+    foreignKey: 'jobId',
+
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+});
+
+Applicant.belongsToMany(Job, {
+    through: JobApplication,
+    as: 'individualJob',
+    foreignKey: 'applicantId',
+
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
 });
 
 module.exports = JobApplication;

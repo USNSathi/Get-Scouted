@@ -1,7 +1,10 @@
 const Applicant = require('../models/applicants');
 const User = require('../models/users');
+const Job = require('../models/jobs');
+
 
 const tokenGenerator = require('../utils/tokenGenerator');
+const jobApplicationController = require('./jobApplicationController');
 
 // user itself can perform this operation
 const profileCreateUpdate = (req, res) => {
@@ -201,6 +204,8 @@ const profileUpdateView = async (req, res) => {
 const dashboardView = (req, res) => {
 	const data = res.locals.data;
 
+	console.log(data);
+
 	if (data.user.phone == '' || data.user.phone == null) {
 		res.redirect('/applicant/profile/edit');
 	} else {
@@ -225,16 +230,36 @@ const profileView = (req, res) => {
 		});
 }
 
-const jobsView = (req, res) => {
+const jobsView = async (req, res) => {
 	const data = res.locals.data;
+
+	const jobs = await Job.findAll({
+		where: {
+			status: 'open',
+		},
+		order: [
+			['createdAt', 'DESC'],
+		],
+	}).then((jobs) => {
+		return jobs;
+	}).catch((err) => {
+		return [];
+	});
+
+	data.jobs = jobs;
 
 	res.render('applicant/jobs', { url: "/applicant/jobs", title: "Jobs", data: data });
 }
 
-const applicationView = (req, res) => {
+const applicationView = async (req, res) => {
 	const data = res.locals.data;
 
+	data.jobs = await jobApplicationController.getAppliedJobs(req, res);
+
+	// console.log(data.jobs);
+
 	res.render('applicant/applications', { url: "/applicant/applications", title: "Job Applications", data: data });
+	// res.send({ url: "/applicant/applications", title: "Job Applications", data: data });
 }
 
 module.exports = {

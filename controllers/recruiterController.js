@@ -3,6 +3,7 @@ const User = require('../models/users');
 const Job = require('../models/jobs');
 
 const tokenGenerator = require('../utils/tokenGenerator');
+const jobApplicationController = require('./jobApplicationController');
 
 
 const profileCreateUpdate = async (req, res) => {
@@ -108,8 +109,6 @@ const dashboardView = async (req, res) => {
     });
 
 
-
-
     if (data.user.phone == '' || data.user.phone == null) {
         res.redirect('/recruiter/profile/edit');
     } else {
@@ -179,6 +178,14 @@ const createJobView = (req, res) => {
     res.render('recruiter/jobPost', { url: "/recruiter/jobs/post", title: "Create Job", isLogin: res.locals.isLogin });
 }
 
+const allApplicantView = async (req, res) => {
+    const data = res.locals.data;
+
+    data.applications = await jobApplicationController.getApplicants(req, res);
+
+    // res.send({ url: "/recruiter/jobs/applicants", title: "All Applicants", isLogin: res.locals.isLogin, data: data });
+    res.render('recruiter/JobApplications', { url: "/recruiter/jobs/applicants", title: "All Applicants", isLogin: res.locals.isLogin, data: data });
+}
 
 module.exports = {
     dashboardView,
@@ -187,6 +194,7 @@ module.exports = {
     profileView,
     createProfileView,
     updateProfileView,
+    allApplicantView,
 
     profileCreateUpdate,
 };

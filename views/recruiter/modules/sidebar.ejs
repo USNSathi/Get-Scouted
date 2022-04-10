@@ -31,6 +31,16 @@
                         </a>
         </li>
         <li>
+            <% if(url=="/recruiter/jobs/applicants" ) { %>
+                <a href="/recruiter/jobs/applicants" class="active">
+                    <% } else { %>
+                        <a href="/recruiter/jobs/applicants">
+                            <% } %>
+                                <i class="fas fa-check-double"></i>
+                                <div class="title"> All Applications</div>
+                        </a>
+        </li>
+        <li>
             <% if(url=="/recruiter/profile" ) { %>
                 <a href="/recruiter/profile" class="active">
                     <% } else { %>

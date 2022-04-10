@@ -11,6 +11,7 @@ router.get('/profile', authMiddleware.isAuthenticated, roleValidation.isRecruite
 router.get('/profile/update', authMiddleware.isAuthenticated, roleValidation.isRecruiter, recruiterController.updateProfileView);
 router.get('/jobs', authMiddleware.isAuthenticated, roleValidation.isRecruiter, recruiterController.jobsView);
 router.get('/jobs/post', authMiddleware.isAuthenticated, roleValidation.isRecruiter, recruiterController.createJobView);
+router.get('/jobs/applicants', authMiddleware.isAuthenticated, roleValidation.isRecruiter, recruiterController.allApplicantView);
 
 router.post('/', authMiddleware.isAuthenticated, roleValidation.isRecruiter, recruiterController.profileCreateUpdate);
 

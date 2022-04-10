@@ -72,7 +72,7 @@ const isApplicant = async (req, res, next) => {
 	if (role === 'applicant') {
 		await Applicant.findOne({ where: { uid: res.locals.data.user.id } }).then(applicant => {
 			if (applicant) {
-				res.locals.data.applicant = applicant;
+				res.locals.data.applicant = applicant.dataValues;
 			} else {
 				res.locals.data.applicant = {};
 			}

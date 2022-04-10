@@ -1,15 +1,21 @@
 <%- include('../modules/head') %>
 
     <div class="container">
-        <%- include('../modules/applicantSidebar') %>
-
-            <div style="height: 60vh" class="d-flex align-items-center justify-content-center">
-
-                <!-- center text -->
-
-                <h1 class="center-text">Welcome To Job Applicaitons</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <%- include('../modules/applicantSidebar') %>
 
             </div>
+            <div class="col-md-9">
+
+                <!-- for each loop -->
+                <% if(data.jobs.length> 0 ) { data.jobs.forEach((job, index) => { %>
+                    <%- include('modules/appliedJobCard', {job, index}) %>
+                        <% }) } else { %>
+                            <h2>No where you applied yet.</h2>
+                            <% } %>
+            </div>
+        </div>
     </div>
 
     <script src="/js/vendor/bootstrap.bundle.min.js"></script>

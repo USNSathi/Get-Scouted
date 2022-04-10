@@ -1,0 +1,16 @@
+<div class="row" style=" background-color: rgba(128, 128, 128, 0.178)">
+    <h3>
+        <%= job.title%>
+    </h3>
+
+    <% job.individualApplicant.forEach(applicant=> { %>
+
+        <div class=" aligin-items-start" style="display: inline-block;">
+            <p style="padding-right: 40px;">
+                <%= applicant.education %>
+            </p>
+            <a class="mb-2" style="text-decoration: none;" href="<%= applicant.cv %>">Download CV</a>
+        </div>
+        <% }); %>
+
+</div>

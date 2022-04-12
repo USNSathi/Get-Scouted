@@ -94,11 +94,20 @@ const dashboardView = async (req, res) => {
 
     const data = res.locals.data;
 
+    if (data.recruiter.id == undefined) {
+        data.recruiter.id = '0';
+    }
+
     // console.log(data);
     const total = await Job.count({
         where: {
             rid: data.recruiter.id
         }
+    }).then(count => {
+        return count;
+    }).catch(err => {
+        // console.log(err);
+        return 0;
     });
 
     const active = await Job.count({
@@ -106,6 +115,11 @@ const dashboardView = async (req, res) => {
             rid: data.recruiter.id,
             status: "open"
         }
+    }).then(count => {
+        return count;
+    }).catch(err => {
+        // console.log(err);
+        return 0;
     });
 
 

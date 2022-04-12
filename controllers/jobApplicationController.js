@@ -1,9 +1,9 @@
 const Job = require("../models/jobs");
 const Applicant = require("../models/applicants");
+const User = require("../models/users");
 const JobApplication = require("../models/jobApplications");
 
 const apply = async (req, res) => {
-
     const data = res.locals.data;
     const jobId = req.params.jobId;
 
@@ -73,6 +73,11 @@ const getApplicants = async (req, res) => {
         include: [{
             model: Applicant,
             as: "individualApplicant",
+
+            include: [{
+                model: User,
+                as: "jobseekers",
+            }]
         }],
     }).then(data => {
         return data;

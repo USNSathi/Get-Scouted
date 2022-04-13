@@ -204,7 +204,7 @@ const profileUpdateView = async (req, res) => {
 const dashboardView = (req, res) => {
 	const data = res.locals.data;
 
-	console.log(data);
+	// console.log(data);
 
 	if (data.user.phone == '' || data.user.phone == null) {
 		res.redirect('/applicant/profile/edit');

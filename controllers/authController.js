@@ -26,7 +26,7 @@ const login = (req, res) => {
 
             if (credential.isBan) {
                 res.locals.message = 'You are banned';
-                return res.redirect('/notice');
+                return res.redirect('/error');
             }
 
             res.locals.credential = {
@@ -84,7 +84,7 @@ const login = (req, res) => {
                 } else if (res.locals.credential.role === 'admin') {
                     res.redirect('/admin');
                 } else {
-                    res.redirect('/notfound');
+                    res.redirect('/error');
                 }
             }).catch(err => {
                 res.locals.message = 'Login failed';

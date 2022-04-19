@@ -1,37 +1,198 @@
 {
-    "url": "/recruiter/profile",
-    "title": "Profile",
+    "url": "/recruiter/jobs/applicants",
+    "title": "All Applicants",
     "isLogin": true,
     "data": {
         "credential": {
-            "id": "6adf8e6a-0c1b-490b-a65e-673bf4afd487",
+            "id": "2d120f4d-5c69-4ba8-b1f6-bc3ff3a6ff31",
             "email": "sadia.nasrin10@northsouth.edu",
             "role": "recruiter"
         },
         "user": {
-            "id": "7ee2846d-66de-4822-b0f4-47d9985ea40b",
+            "id": "c811f1c6-1d86-4947-afa8-3f357c830e86",
             "name": "Sadia",
             "photo": null,
-            "phone": null,
-            "address": null
+            "phone": "01623992571",
+            "address": "House : 14/ka, Madborbari Mosjid Road, Jagonnathpur, Vatara, Bashundhara R/A"
         },
-        "iat": 1649219963,
-        "exp": 1649223563,
+        "iat": 1649797178,
+        "exp": 1649800778,
         "recruiter": {
-            "id": "4716dbab-7246-4871-9054-b77250aa2e5b",
-            "companyName": "hsgajgd",
-            "contractNumber": "23456",
-            "yearOfEstablishment": "2345",
+            "id": "a8d9e51e-f0fb-4e42-88b5-c25fb46d8053",
+            "companyName": "Nothing",
+            "contactNumber": "01623992571",
+            "yearOfEstablishment": "2000",
             "companyType": "open",
             "country": "Bangladesh",
             "region": "Dhaka",
             "companyAddress": "House : 14/ka, Madborbari Mosjid Road, Jagonnathpur, Vatara, Bashundhara R/A",
-            "businessDescription": "cjeckebc",
-            "tradingLicense": "456",
-            "websiteURL": "jdhd.dd.dd",
-            "uid": "7ee2846d-66de-4822-b0f4-47d9985ea40b",
-            "createdAt": "2022-04-06T04:42:07.000Z",
-            "updatedAt": "2022-04-06T04:51:19.000Z"
-        }
+            "businessDescription": "Nothing",
+            "tradingLicense": "120",
+            "websiteURL": "nothing.com",
+            "createdAt": "2022-04-09T22:56:11.000Z",
+            "updatedAt": "2022-04-09T22:56:11.000Z",
+            "uid": "c811f1c6-1d86-4947-afa8-3f357c830e86"
+        },
+        "applications": [
+            {
+                "id": "5c4b85c1-661f-4adf-b993-0f7c8869a4d0",
+                "title": "Another Job",
+                "description": "Nothing",
+                "deadline": "2022-04-14",
+                "type": "Part-Time",
+                "placement": "1",
+                "salary": "50000",
+                "location": "Uttara",
+                "vacancy": 5,
+                "status": "Open",
+                "isVerified": false,
+                "createdAt": "2022-04-09T23:05:52.000Z",
+                "updatedAt": "2022-04-09T23:05:52.000Z",
+                "rid": "a8d9e51e-f0fb-4e42-88b5-c25fb46d8053",
+                "individualApplicant": [
+                    {
+                        "id": "6627620e-72f0-4215-8770-3f9803541bd5",
+                        "cv": "/uploads/pdfs/1649546200181-Programming Assessment.pdf",
+                        "dob": "2000-11-22",
+                        "skill": "Engineer/Architect",
+                        "status": "open",
+                        "education": "North South University",
+                        "region": "Dhaka",
+                        "country": "Bangladesh",
+                        "currentCompany": "Nothing",
+                        "currentPosition": "Nothing",
+                        "isCompleted": false,
+                        "isVerified": false,
+                        "createdAt": "2022-04-09T23:16:40.000Z",
+                        "updatedAt": "2022-04-09T23:16:40.000Z",
+                        "uid": "1897293c-6c75-40af-89a7-9bdf158ca5ad",
+                        "jobApplications": {
+                            "id": "5e6e3aa0-f946-4e44-86db-152044446acf",
+                            "result": "pending",
+                            "createdAt": "2022-04-10T00:52:42.000Z",
+                            "updatedAt": "2022-04-10T00:52:42.000Z",
+                            "jobId": "5c4b85c1-661f-4adf-b993-0f7c8869a4d0",
+                            "applicantId": "6627620e-72f0-4215-8770-3f9803541bd5"
+                        },
+                        "jobseekers": {
+                            "id": "1897293c-6c75-40af-89a7-9bdf158ca5ad",
+                            "name": "Sathi",
+                            "photo": null,
+                            "phone": "01623992571",
+                            "address": "House : 14/ka, Madborbari Mosjid Road, Jagonnathpur, Vatara, Bashundhara R/A",
+                            "cid": "b519fbc5-3498-4f96-bb4c-62db769a17a7",
+                            "createdAt": "2022-04-09T23:15:15.000Z",
+                            "updatedAt": "2022-04-09T23:16:40.000Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "6bd9c418-1eaa-4c25-b254-e4c9dafdc8a4",
+                "title": "New",
+                "description": "Nothing",
+                "deadline": "2022-04-20",
+                "type": "Full-time",
+                "placement": "Remote",
+                "salary": "20000",
+                "location": "Bashundhar R/A",
+                "vacancy": 2,
+                "status": "Open",
+                "isVerified": false,
+                "createdAt": "2022-04-10T06:44:31.000Z",
+                "updatedAt": "2022-04-10T06:44:31.000Z",
+                "rid": "a8d9e51e-f0fb-4e42-88b5-c25fb46d8053",
+                "individualApplicant": [
+                    {
+                        "id": "6627620e-72f0-4215-8770-3f9803541bd5",
+                        "cv": "/uploads/pdfs/1649546200181-Programming Assessment.pdf",
+                        "dob": "2000-11-22",
+                        "skill": "Engineer/Architect",
+                        "status": "open",
+                        "education": "North South University",
+                        "region": "Dhaka",
+                        "country": "Bangladesh",
+                        "currentCompany": "Nothing",
+                        "currentPosition": "Nothing",
+                        "isCompleted": false,
+                        "isVerified": false,
+                        "createdAt": "2022-04-09T23:16:40.000Z",
+                        "updatedAt": "2022-04-09T23:16:40.000Z",
+                        "uid": "1897293c-6c75-40af-89a7-9bdf158ca5ad",
+                        "jobApplications": {
+                            "id": "2e23eba6-9ed3-46fa-8385-c18200f8364c",
+                            "result": "pending",
+                            "createdAt": "2022-04-10T06:45:32.000Z",
+                            "updatedAt": "2022-04-12T19:49:57.000Z",
+                            "jobId": "6bd9c418-1eaa-4c25-b254-e4c9dafdc8a4",
+                            "applicantId": "6627620e-72f0-4215-8770-3f9803541bd5"
+                        },
+                        "jobseekers": {
+                            "id": "1897293c-6c75-40af-89a7-9bdf158ca5ad",
+                            "name": "Sathi",
+                            "photo": null,
+                            "phone": "01623992571",
+                            "address": "House : 14/ka, Madborbari Mosjid Road, Jagonnathpur, Vatara, Bashundhara R/A",
+                            "cid": "b519fbc5-3498-4f96-bb4c-62db769a17a7",
+                            "createdAt": "2022-04-09T23:15:15.000Z",
+                            "updatedAt": "2022-04-09T23:16:40.000Z"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "98fd546f-b602-424d-803f-7c3070aa0639",
+                "title": "New Job",
+                "description": "Nothing",
+                "deadline": "2022-05-01",
+                "type": "Full-time",
+                "placement": "2",
+                "salary": "100000",
+                "location": "Bashundhar R/A",
+                "vacancy": 2,
+                "status": "Open",
+                "isVerified": false,
+                "createdAt": "2022-04-09T23:03:41.000Z",
+                "updatedAt": "2022-04-09T23:03:41.000Z",
+                "rid": "a8d9e51e-f0fb-4e42-88b5-c25fb46d8053",
+                "individualApplicant": [
+                    {
+                        "id": "6627620e-72f0-4215-8770-3f9803541bd5",
+                        "cv": "/uploads/pdfs/1649546200181-Programming Assessment.pdf",
+                        "dob": "2000-11-22",
+                        "skill": "Engineer/Architect",
+                        "status": "open",
+                        "education": "North South University",
+                        "region": "Dhaka",
+                        "country": "Bangladesh",
+                        "currentCompany": "Nothing",
+                        "currentPosition": "Nothing",
+                        "isCompleted": false,
+                        "isVerified": false,
+                        "createdAt": "2022-04-09T23:16:40.000Z",
+                        "updatedAt": "2022-04-09T23:16:40.000Z",
+                        "uid": "1897293c-6c75-40af-89a7-9bdf158ca5ad",
+                        "jobApplications": {
+                            "id": "2ef896fa-7fef-476f-b61f-2f8ea3034d7a",
+                            "result": "pending",
+                            "createdAt": "2022-04-10T01:22:23.000Z",
+                            "updatedAt": "2022-04-10T01:22:23.000Z",
+                            "jobId": "98fd546f-b602-424d-803f-7c3070aa0639",
+                            "applicantId": "6627620e-72f0-4215-8770-3f9803541bd5"
+                        },
+                        "jobseekers": {
+                            "id": "1897293c-6c75-40af-89a7-9bdf158ca5ad",
+                            "name": "Sathi",
+                            "photo": null,
+                            "phone": "01623992571",
+                            "address": "House : 14/ka, Madborbari Mosjid Road, Jagonnathpur, Vatara, Bashundhara R/A",
+                            "cid": "b519fbc5-3498-4f96-bb4c-62db769a17a7",
+                            "createdAt": "2022-04-09T23:15:15.000Z",
+                            "updatedAt": "2022-04-09T23:16:40.000Z"
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }

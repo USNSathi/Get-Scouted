@@ -7,7 +7,7 @@ const tokenGenerator = require('../utils/tokenGenerator');
 const jobApplicationController = require('./jobApplicationController');
 
 // user itself can perform this operation
-const profileCreateUpdate = (req, res) => {
+const profileCreateUpdate = async (req, res) => {
 
 	const uid = res.locals.data.user.id;
 	const { phone, address } = req.body;
@@ -16,7 +16,7 @@ const profileCreateUpdate = (req, res) => {
 
 	// console.log(req.body);
 
-	User.update({
+	await User.update({
 		phone,
 		address,
 	}, {
